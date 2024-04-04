@@ -1,6 +1,3 @@
 import { reactive } from "vue";
 
-export const store = reactive({
-  helloValue: "store value",
-  randomMail: "",
-});
+export const store = reactive({});
