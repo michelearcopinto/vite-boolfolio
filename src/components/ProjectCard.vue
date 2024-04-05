@@ -33,11 +33,12 @@ export default {
           </li>
           <li>
             tags:
-            <ul v-if="propElement.tags.length > 0">
-              <li v-for="(element, index) in propElement.tags">
-                {{ element.name }}
-              </li>
-            </ul>
+            <span
+              v-if="propElement.tags.length > 0"
+              v-for="(element, index) in propElement.tags"
+              class="badge rounded-pill text-bg-primary me-1"
+              >{{ element.name }}</span
+            >
             <span v-else><strong>Nessuno</strong></span>
           </li>
         </ul>
@@ -67,5 +68,10 @@ li {
     height: 100%;
     overflow: auto;
   }
+}
+
+ol,
+ul {
+  padding-left: 1rem;
 }
 </style>
