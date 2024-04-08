@@ -1,24 +1,35 @@
 <script>
-// import
+import { store } from "../store";
 
 export default {
   name: "ProjectCard",
   props: ["propElement"],
+  data() {
+    return {
+      store,
+    };
+  },
 };
 </script>
 
 <template>
   <div class="col-4 project-container">
-    <div class="card text-start p-3 project-card">
+    <div class="card text-start project-card">
       <figure v-show="propElement.cover_image">
         <img
           class="card-img-top"
-          :src="propElement.cover_image"
+          :src="`${store.apiBaseUrl}/storage/${propElement.cover_image}`"
           :alt="propElement.slug"
         />
       </figure>
-      <div class="card-body">
-        <h4 class="card-title">{{ propElement.title }}</h4>
+      <div class="card-body p-3">
+        <h4 class="card-title">
+          <router-link
+            :to="{ name: 'single-project', params: { slug: propElement.slug } }"
+          >
+            {{ propElement.title }}
+          </router-link>
+        </h4>
         <ul>
           <li>
             slug: <strong>{{ propElement.slug }}</strong>
